@@ -1,14 +1,33 @@
 /* global c3 */
 
-var submitButton = document.getElementById('submit-button')
-submitButton.addEventListener('click', submit)
+$('#mainTab a').on('click', function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+})
 
-var exampleButton = document.getElementById('example-button')
-exampleButton.addEventListener('click', loadExample)
+var resultLink = document.getElementById('link-results')
+var resultTab = document.getElementById('result-tab')
+
+var submitButton = document.getElementById('btn-submit')
+submitButton.addEventListener('click', function () {
+    resultLink.click()
+    run()
+})
+
+var exampleButton = document.getElementById('btn-example')
+exampleButton.addEventListener('click', function () {
+    loadExample()
+    setTimeout(function () {
+        resultLink.click()
+    }, 1000)
+})
 
 var seqsInput = document.getElementById('seqs')
 
-function submit() {
+var spinnerHtml = '<i class="fas fa-spinner fa-2x spinner"></i>'
+
+function run() {
+    resultTab.innerHTML = spinnerHtml
     var seqs = seqsInput.value
         .split('\n')
         .filter(function (line) {
@@ -51,7 +70,7 @@ function isDna(seq) {
 function displayResults(seqs) {
     var frequencies = getFrequencies(seqs)
     c3.generate({
-        bindto: '#chart',
+        bindto: '#result-tab',
         data: {
             columns: [
                 ['A'].concat(frequencies.A),
@@ -131,5 +150,5 @@ function loadExample() {
 }
 
 function displayError(message) {
-    document.getElementById('chart').innerHTML = '<p class="error">Error: ' + message + '</p>'
+    resultTab.innerHTML = '<p class="text-danger">Error: ' + message + '</p>'
 }
