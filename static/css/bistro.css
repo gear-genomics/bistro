@@ -32,7 +32,7 @@ footer {
 }
 
 .app-name {
-  font-family: 'Rosarivo';
+  font-family: 'Rosarivo', sans-serif;
 }
 
 a.plain,
@@ -44,10 +44,6 @@ a.plain:hover {
 
 #mainTab .nav-link.active {
   border-bottom: 2px solid;
-}
-
-#ref-tabs {
-  height: 80px;
 }
 
 .spinner {
