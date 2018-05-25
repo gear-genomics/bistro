@@ -7,7 +7,6 @@
   <title>bistro: barcode distribution | GEAR</title>
   <meta name="description" content="Visualize the per-position base distribution across multiple DNA sequences.">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
   <link rel="stylesheet" href="static/css/gear.css">
   <link rel="stylesheet" href="static/css/bistro.css">
@@ -33,8 +32,8 @@
     </div>
   </header>
 
-  <section class="main container">
-    <ul class="nav nav-fill mb-4" id="mainTab">
+  <main class="container">
+    <ul class="nav nav-fill mb-2" id="mainTab">
       <li class="nav-item">
         <a class="nav-link active" href="#input-tab">Input</a>
       </li>
@@ -43,21 +42,29 @@
       </li>
     </ul>
     <div class="tab-content" id="main-tabs">
-      <div class="tab-pane fade show active" id="input-tab">
-        Enter raw sequences, one per line:
-        <textarea id="seqs" spellcheck="false"></textarea>
+      <div class="tab-pane show active" id="input-tab">
+        <div class="alert alert-light mb-2" role="alert">
+          <i class="fas fa-info-circle"></i>
+          Enter raw sequences, one per line
+          <br>
+          (click the <code>Load Example</code> button to view an example)
+        </div>
+        <textarea id="seqs" spellcheck="false" class="form-control"></textarea>
         <button type="submit" class="btn btn-outline-primary" id="btn-submit">
           <i class="fas fa-rocket" style="margin-right: 5px;"></i>
           Launch Analysis
         </button>
         <button type="submit" class="btn btn-outline-primary" id="btn-example">
           <i class="fas fa-eye" style="margin-right: 5px;"></i>
-          Show Example
+          Load Example
         </button>
       </div>
-      <div class="tab-pane fade" id="result-tab"></div>
+      <div class="tab-pane" id="result-tab">
+        <div id="notification"></div>
+        <div id="chart"></div>
+      </div>
     </div>
-  </section>
+  </main>
 
   <footer>
     <div class="container">
@@ -93,8 +100,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-1.38.0.min.js"></script>
 
   <script src="static/js/bistro.js"></script>
 
