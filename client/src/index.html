@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <title>bistro: barcode distribution | GEAR</title>
+    <title>Bistro: Barcode distribution | GEAR</title>
     <meta
       name="description"
       content="Visualize the per-position base distribution across multiple DNA sequences."
@@ -20,7 +20,7 @@
   <body>
     <header class="px-0 py-4">
       <div class="container">
-        <h1 class="display-4 app-name">bistro</h1>
+        <h1 class="display-4 app-name">Bistro</h1>
         <p class="lead">
           Visualize the per-position base distribution across multiple DNA
           sequences.
@@ -29,14 +29,14 @@
           <i class="fas fa-book"></i> Docs
         </a>
         ·-->
-	<a class="plain" href="https://www.gear-genomics.com/contact" target="_blank">
+        <a class="plain" href="https://www.gear-genomics.com/contact" target="_blank">
           <i class="fas fa-question"></i> Get help
-	</a>
-	·
-	<a class="plain" href="https://www.gear-genomics.com/citation" target="_blank">
+        </a>
+        ·
+        <a class="plain" href="https://www.gear-genomics.com/citation" target="_blank">
           <i class="fas fa-user-graduate"></i> Citation
-	</a>
-	·
+        </a>
+        ·
         <a
           class="plain"
           target="_blank"
@@ -54,6 +54,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#result-tab" id="link-results">Results</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#help-tab" id="link-help">Help</a>
         </li>
       </ul>
       <div class="tab-content" id="main-tabs">
@@ -85,6 +88,28 @@
         <div class="tab-pane" id="result-tab">
           <div id="notification"></div>
           <div id="chart"></div>
+        </div>
+        <div class="tab-pane" id="help-tab">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-life-ring"></i> How to use</h5>
+              <ol class="mb-3">
+                <li>Paste DNA sequences in the <strong>Input</strong> tab, one sequence per line.</li>
+                <li>Ensure all sequences have the <strong>same length</strong> and contain only <code>A</code>, <code>C</code>, <code>G</code>, or <code>T</code> (case-insensitive).</li>
+                <li>Click <strong>Launch Analysis</strong> to see the stacked per-position base frequencies in the <strong>Results</strong> tab.</li>
+              </ol>
+              <h6 class="card-subtitle mb-2 text-muted">Example input</h6>
+              <pre class="mb-3"><code>GATAGCTCAG
+TGCAATGGTC
+TTATACCAGG
+CAGCAGTTTA
+ACTCTGAGGC
+ACAGGACTCT</code></pre>
+              <p class="mb-0">
+                Tip: Use the <strong>Load Example</strong> button in the Input tab to autofill these sequences.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </main>

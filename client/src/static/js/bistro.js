@@ -25,8 +25,11 @@ function run () {
   chart.innerHTML = ''
   const seqs = seqsInput.value
     .split('\n')
+    .map(function (line) {
+      return line.trim()
+    })
     .filter(function (line) {
-      return line !== ""
+      return line !== ''
     })
 
   if (seqs.length === 0) {
@@ -34,10 +37,14 @@ function run () {
     return
   }
 
+  const normalizedSeqs = seqs.map(function (seq) {
+    return seq.toUpperCase()
+  })
+
   let lastLen = null
-  for (let i = 0; i < seqs.length; i += 1) {
-    const seq = seqs[i]
-    if (i > 0 && lastLen != seq.length) {
+  for (let i = 0; i < normalizedSeqs.length; i += 1) {
+    const seq = normalizedSeqs[i]
+    if (i > 0 && lastLen !== seq.length) {
       displayError('sequences do not have the same length')
       return
     }
@@ -47,13 +54,13 @@ function run () {
       return
     }
   }
-  displayResults(seqs)
+  displayResults(normalizedSeqs)
 }
 
 function isDna (seq) {
-  const alphabet = { 'A': true, 'C': true, 'G': true, 'T': true }
+  const alphabet = { A: true, C: true, G: true, T: true }
   for (let i = 0; i < seq.length; i += 1) {
-    const base = seq[i].toUpperCase()
+    const base = seq[i]
     if (!alphabet.hasOwnProperty(base)) {
       return false
     }
@@ -62,7 +69,7 @@ function isDna (seq) {
 }
 
 function displayResults (seqs) {
-  baseFrequencies = computeBaseFrequencies(seqs)
+  const baseFrequencies = computeBaseFrequencies(seqs)
   notification.innerHTML = ''
   plotFrequencies(baseFrequencies, chartId)
 }
